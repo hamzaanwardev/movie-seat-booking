@@ -62,3 +62,6 @@ container.addEventListener('click', (e) => {
        updateSelectedCount ();
     } ;
 });
+
+// Initial Count and total Seats
+updateSelectedCount();
