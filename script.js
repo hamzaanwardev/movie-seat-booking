@@ -4,7 +4,12 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
-const ticketPrice = +movieSelect.value;
+let ticketPrice = +movieSelect.value;
+
+function setMovieData(movieIndex, moviePrice) {
+    localStorage.setItem('selectedMovieIndex', movieIndex);
+    localStorage.setItem('selectedMoviePrice', moviePrice);
+}
 
 
 // Update total And Count
@@ -25,7 +30,7 @@ function updateSelectedCount() {
 
 movieSelect.addEventListener('change', e => {
     ticketPrice = +e.target.value;
-    console.log(e.target.selectedIndex);
+    setMovieData(e.target.selectedIndex, e.target.value);
     updateSelectedCount ();
 
 });
