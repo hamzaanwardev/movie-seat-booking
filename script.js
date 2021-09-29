@@ -13,9 +13,10 @@ function updateSelectedCount() {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
 
-    const seatsIndex = [...selectedSeats].map((seat) => {
-        return[...seats].indexOf(seat)
-    })
+    const seatsIndex = [...selectedSeats].map((seat) =>[...seats].indexOf(seat));
+
+    localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
+
     const selectedSeatsCount = selectedSeats.length;
 
    count.innerText = selectedSeatsCount;
@@ -24,13 +25,14 @@ function updateSelectedCount() {
 
 movieSelect.addEventListener('change', e => {
     ticketPrice = +e.target.value;
-    updateSelectedCount
+    console.log(e.target.selectedIndex);
+    updateSelectedCount ();
 
-})
+});
 container.addEventListener('click', (e) => {
     if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
        e.target.classList.toggle ('selected');
 
        updateSelectedCount ();
-    } 
-})
+    } ;
+});
